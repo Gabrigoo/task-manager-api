@@ -1,10 +1,9 @@
-const express = require('express');
-require('./db/mongoose');
-const userRouter = require('./routers/user');
-const taskRouter = require('./routers/task');
-
-const app = express();
+const app = require('./app');
 const port = process.env.PORT;
+
+app.listen(port, () => {
+  console.log('Server is up on port ' + port);
+})
 // This is the middleware for express
 // app.use((req, res, next) => {
 //   if (req.method === 'GET') {
@@ -42,21 +41,6 @@ const port = process.env.PORT;
 // }, (error, req, res, next) => {
 //   res.status(400).send({ error: error.message })
 // });
-
-
-app.use(express.json());
-app.use(userRouter);
-app.use(taskRouter);
-
-const router = new express.Router();
-router.get('/test', (req, res) => {
-  res.send('This is from my other router');
-});
-app.use(router);
-
-app.listen(port, () => {
-  console.log('Server is up on port ' + port);
-})
 
 // const jwt = require('jsonwebtoken');
 

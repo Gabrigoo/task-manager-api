@@ -20,4 +20,4 @@ deleteTaskAndCount('5fff54b366385333c07c9644').then((count) => {
   console.log(count);
 }).catch((e) => {
   console.log(e);
-})
+});
